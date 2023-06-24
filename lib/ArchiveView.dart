@@ -152,11 +152,11 @@ class _ArchiveViewState extends State<ArchiveView> {
                               shrinkWrap: true,
                               itemBuilder: (context, index) => InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => NoteView(),
-                                      ));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) => NoteView(),
+                                  //     ));
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(10),
@@ -217,12 +217,12 @@ class _ArchiveViewState extends State<ArchiveView> {
                               shrinkWrap: true,
                               itemBuilder: (context, index) => InkWell(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const NoteView(),
-                                    ),
-                                  );
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => const NoteView(),
+                                  //   ),
+                                  // );
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(8),

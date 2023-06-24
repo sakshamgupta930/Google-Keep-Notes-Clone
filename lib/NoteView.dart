@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_notes_lite/EditNoteView.dart';
 import 'package:google_notes_lite/colors.dart';
 
+import 'model/MyNoteModel.dart';
+
 class NoteView extends StatefulWidget {
-  const NoteView({super.key});
+  Note note;
+  NoteView({required this.note});
 
   @override
   State<NoteView> createState() => _NoteViewState();
 }
 
 class _NoteViewState extends State<NoteView> {
-  String note =
-      "This IS NOTE This IS NOTE This IS NOTE This IS NOTE This IS NOTE This IS NOTE This IS NOTE This IS NOTE";
-  String note1 = "This IS NOTE This IS NOTE This IS NOTE";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class _NoteViewState extends State<NoteView> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const EditNoteView(),
+                  builder: (context) => EditNoteView(note: widget.note,),
                 ),
               );
             },
@@ -48,8 +48,8 @@ class _NoteViewState extends State<NoteView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "HEADING",
+            Text(
+              widget.note.title,
               style: TextStyle(
                 color: white,
                 fontSize: 23,
@@ -58,7 +58,7 @@ class _NoteViewState extends State<NoteView> {
             ),
             const SizedBox(height: 20),
             Text(
-              note,
+              widget.note.content,
               style: const TextStyle(color: white),
             ),
           ],
