@@ -28,15 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // createEntry(
-    //   Note(
-    //     pin: false,
-    //     title: "Saksham",
-    //     content:
-    //         "ThIs is Sksham Content for the telling fot the code with youtbe there are mamny things channel",
-    //     createdTime: DateTime.now(),
-    //   ),
-    // );
+    // createEntry(Note(pin: false, isArchive: false, title: "Welcome To Keep Notes", content: "Content contetnt", createdTime: DateTime.now()));
     getAllNotes();
   }
 
@@ -133,10 +125,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const SearchView(),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SearchView(),
+                                  ),
+                                );
                               },
                               child: SizedBox(
                                 width: width * 0.4,
@@ -186,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               const CircleAvatar(
                                 radius: 16,
                                 backgroundColor: white,
+                                child: Icon(Icons.person),
                               )
                             ],
                           ),
@@ -206,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   margin: const EdgeInsets.symmetric(
                                       horizontal: 10),
                                   child: Text(
-                                    "ALL",
+                                    isGrid ? "ALL" : "LIST VIEW",
                                     style: TextStyle(
                                         color: white.withOpacity(0.5),
                                         fontSize: 13,
@@ -272,81 +266,81 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ),
                             const SizedBox(height: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Text(
-                                    "LIST VIEW",
-                                    style: TextStyle(
-                                      color: white.withOpacity(0.5),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 15),
-                                  child: ListView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    itemCount: 10,
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => NoteView(
-                                              note: notesList[index],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(8),
-                                        // margin: const EdgeInsets.only(bottom: 12),
-                                        margin: const EdgeInsets.symmetric(
-                                            vertical: 5),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: white.withOpacity(0.4),
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "HEADING",
-                                              style: TextStyle(
-                                                color: white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 8),
-                                            Text(
-                                              index.isEven
-                                                  ? note.length > 200
-                                                      ? "${note.substring(0, 250)}...."
-                                                      : note
-                                                  : note1,
-                                              style:
-                                                  const TextStyle(color: white),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // Column(
+                            //   crossAxisAlignment: CrossAxisAlignment.start,
+                            //   children: [
+                            //     Container(
+                            //       margin: const EdgeInsets.symmetric(
+                            //           horizontal: 10),
+                            //       child: Text(
+                            //         "LIST VIEW",
+                            //         style: TextStyle(
+                            //           color: white.withOpacity(0.5),
+                            //           fontSize: 13,
+                            //           fontWeight: FontWeight.bold,
+                            //         ),
+                            //       ),
+                            //     ),
+                            //     Container(
+                            //       padding:
+                            //           const EdgeInsets.symmetric(vertical: 15),
+                            //       child: ListView.builder(
+                            //         physics:
+                            //             const NeverScrollableScrollPhysics(),
+                            //         itemCount: 10,
+                            //         shrinkWrap: true,
+                            //         itemBuilder: (context, index) => InkWell(
+                            //           onTap: () {
+                            //             Navigator.push(
+                            //               context,
+                            //               MaterialPageRoute(
+                            //                 builder: (context) => NoteView(
+                            //                   note: notesList[index],
+                            //                 ),
+                            //               ),
+                            //             );
+                            //           },
+                            //           child: Container(
+                            //             padding: const EdgeInsets.all(8),
+                            //             // margin: const EdgeInsets.only(bottom: 12),
+                            //             margin: const EdgeInsets.symmetric(
+                            //                 vertical: 5),
+                            //             decoration: BoxDecoration(
+                            //                 border: Border.all(
+                            //                   color: white.withOpacity(0.4),
+                            //                 ),
+                            //                 borderRadius:
+                            //                     BorderRadius.circular(10)),
+                            //             child: Column(
+                            //               crossAxisAlignment:
+                            //                   CrossAxisAlignment.start,
+                            //               children: [
+                            //                 const Text(
+                            //                   "HEADING",
+                            //                   style: TextStyle(
+                            //                     color: white,
+                            //                     fontSize: 20,
+                            //                     fontWeight: FontWeight.bold,
+                            //                   ),
+                            //                 ),
+                            //                 const SizedBox(height: 8),
+                            //                 Text(
+                            //                   index.isEven
+                            //                       ? note.length > 200
+                            //                           ? "${note.substring(0, 250)}...."
+                            //                           : note
+                            //                       : note1,
+                            //                   style:
+                            //                       const TextStyle(color: white),
+                            //                 ),
+                            //               ],
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                           ],
                         ),
                       ),

@@ -115,6 +115,7 @@ class _ArchiveViewState extends State<ArchiveView> {
                         const CircleAvatar(
                           radius: 16,
                           backgroundColor: white,
+                          child: Icon(Icons.person),
                         )
                       ],
                     ),
@@ -134,7 +135,7 @@ class _ArchiveViewState extends State<ArchiveView> {
                           Container(
                             margin: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              "ALL",
+                              "ARCHIVE",
                               style: TextStyle(
                                   color: white.withOpacity(0.5),
                                   fontSize: 13,

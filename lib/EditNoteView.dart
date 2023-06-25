@@ -7,7 +7,7 @@ import 'model/MyNoteModel.dart';
 
 class EditNoteView extends StatefulWidget {
   Note note;
-  EditNoteView({super.key, required this.note});
+  EditNoteView({required this.note});
 
   @override
   State<EditNoteView> createState() => _EditNoteViewState();
@@ -20,8 +20,8 @@ class _EditNoteViewState extends State<EditNoteView> {
   @override
   void initState() {
     super.initState();
-    NewTitle = widget.note.title.toString();
-    NewNoteDet = widget.note.content.toString();
+    this.NewTitle = widget.note.title.toString();
+    this.NewNoteDet = widget.note.content.toString();
   }
 
   @override
@@ -36,10 +36,10 @@ class _EditNoteViewState extends State<EditNoteView> {
             onPressed: () async {
               Note newNote = Note(
                 id: widget.note.id,
-                pin: false,
+                pin: widget.note.pin,
                 title: NewTitle,
                 content: NewNoteDet,
-                createdTime: widget.note.createdTime,
+                createdTime: widget.note.createdTime, isArchive: widget.note.isArchive,
               );
               await NotesDatabase.instance.updateNote(newNote);
               Navigator.pushReplacement(

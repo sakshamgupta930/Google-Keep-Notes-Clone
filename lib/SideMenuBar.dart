@@ -21,18 +21,12 @@ class _SideMenuState extends State<SideMenu> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 14,
-                ),
+                margin: const EdgeInsets.only(top: 30,bottom: 16,left: 20),
                 child: const Text(
                   "Google Keep",
                   style: TextStyle(
-                      color: white, fontSize: 25, fontWeight: FontWeight.bold),
+                      color: white, fontSize: 22, fontWeight: FontWeight.bold),
                 ),
-              ),
-              Divider(
-                color: white.withOpacity(0.2),
               ),
               sectioNotes(),
               sectionArchive(),
@@ -46,7 +40,7 @@ class _SideMenuState extends State<SideMenu> {
 
   Widget sectioNotes() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 3),
       margin: const EdgeInsets.only(right: 10),
       child: TextButton(
         style: ButtonStyle(
@@ -68,15 +62,15 @@ class _SideMenuState extends State<SideMenu> {
             children: [
               Icon(
                 Icons.lightbulb,
-                size: 25,
-                color: white.withOpacity(0.7),
+                size: 20,
+                color: white,
               ),
               const SizedBox(width: 20),
               Text(
                 "Notes",
                 style: TextStyle(
-                  color: white.withOpacity(0.7),
-                  fontSize: 18,
+                  color: white,
+                  fontSize: 15,
                 ),
               ),
             ],
@@ -114,15 +108,15 @@ class _SideMenuState extends State<SideMenu> {
             children: [
               Icon(
                 Icons.archive_outlined,
-                size: 25,
-                color: white.withOpacity(0.7),
+                size: 20,
+                color: white,
               ),
               const SizedBox(width: 20),
               Text(
                 "Archive",
                 style: TextStyle(
-                  color: white.withOpacity(0.7),
-                  fontSize: 18,
+                  color: white,
+                  fontSize: 15,
                 ),
               ),
             ],
@@ -156,19 +150,19 @@ class _SideMenuState extends State<SideMenu> {
         },
         child: Container(
           padding: const EdgeInsets.all(5),
-          child: Row(
+          child: const Row(
             children: [
               Icon(
                 Icons.settings_outlined,
-                size: 25,
-                color: white.withOpacity(0.7),
+                size: 20,
+                color: white,
               ),
-              const SizedBox(width: 20),
+              SizedBox(width: 20),
               Text(
                 "Settings",
                 style: TextStyle(
-                  color: white.withOpacity(0.7),
-                  fontSize: 18,
+                  color: white,
+                  fontSize: 15,
                 ),
               ),
             ],

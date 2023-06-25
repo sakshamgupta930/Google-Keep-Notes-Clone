@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_notes_lite/ArchiveView.dart';
 import 'package:google_notes_lite/EditNoteView.dart';
 import 'package:google_notes_lite/colors.dart';
+import 'package:google_notes_lite/home_screen.dart';
+import 'package:google_notes_lite/services/db..dart';
 
 import 'model/MyNoteModel.dart';
 
@@ -23,23 +26,55 @@ class _NoteViewState extends State<NoteView> {
         elevation: 0.0,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.push_pin_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.archive_outlined),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              await NotesDatabase.instance.pinNote(widget.note);
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => EditNoteView(note: widget.note,),
+                  builder: (context) => HomeScreen(),
                 ),
               );
             },
-            icon: const Icon(Icons.edit_outlined),
+            icon: widget.note.pin
+                ? Icon(Icons.push_pin)
+                : Icon(Icons.push_pin_outlined),
+          ),
+          IconButton(
+            onPressed: () async {
+              await NotesDatabase.instance.archiveNote(widget.note);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ),
+              );
+            },
+            icon: widget.note.isArchive
+                ? Icon(Icons.archive_rounded)
+                : Icon(Icons.archive_outlined),
+          ),
+          IconButton(
+            onPressed: () async {
+              await NotesDatabase.instance.deleteNote(widget.note);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
+            icon: const Icon(Icons.delete_outlined),
+          ),
+          IconButton(
+            onPressed: () async {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EditNoteView(
+                    note: widget.note,
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(Icons.edit),
           ),
         ],
       ),
@@ -50,7 +85,7 @@ class _NoteViewState extends State<NoteView> {
           children: [
             Text(
               widget.note.title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: white,
                 fontSize: 23,
                 fontWeight: FontWeight.bold,
